@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="/gallery_gen/quantum-dev-favicon.png">
+
+
+  <title>QuantumDev</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #0047ab;
+      color: white;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      line-height: 1.6;
+      animation: fadeIn 2s ease-out;
+    }
+
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+
+    .container {
+      max-width: 900px;
+      margin: 50px auto;
+      padding: 30px;
+      background-color: #ffffff;
+      color: #333;
+      border-radius: 15px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+      animation: slideUp 1s ease-out;
+    }
+
+
+    @keyframes slideUp {
+      0% { transform: translateY(50px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+
+    .profile {
+      position: relative;
+      margin-bottom: 40px;
+      animation: fadeIn 1.5s ease-out;
+    }
+
+
+    .profile img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #0047ab;
+      margin-top: -70px;
+      transition: transform 0.3s ease;
+    }
+
+
+    .profile img:hover {
+      transform: scale(1.1);
+    }
+
+
+    .profile h1 {
+      font-size: 24px;
+      margin: 10px 0;
+      animation: slideUp 1.5s ease-out;
+    }
+
+
+    .job-description {
+      font-size: 16px;
+      font-weight: bold;
+      color: #555;
+      margin-bottom: 20px;
+      animation: fadeIn 2s ease-out;
+    }
+
+
+    .intro {
+      font-size: 16px;
+      margin-bottom: 20px;
+      color: #555;
+      animation: fadeIn 2.5s ease-out;
+    }
+
+
+    .icons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin: 20px 0;
+      animation: fadeIn 3s ease-out;
+    }
+
+
+    .icons a {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      background-color: #f4f4f4;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+
+    .icons a:hover {
+      background-color: #005bb5;
+      transform: scale(1.2);
+    }
+
+
+    .icons img {
+      width: 24px;
+      height: 24px;
+    }
+
+
+    hr {
+      border: 2px solid #0073e6;
+      margin: 40px 0;
+      animation: fadeIn 4s ease-out;
+    }
+
+
+    .hire-button {
+      background-color: #0047ab;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 20px;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+
+    .hire-button:hover {
+      background-color: #00377d;
+      transform: scale(1.05);
+    }
+
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding-top: 60px;
+    }
+
+
+    .modal-content {
+      background-color: #333;
+      margin: auto;
+      padding: 20px;
+      border-radius: 10px;
+      width: 70%;
+      max-width: 800px;
+      color: #fff;
+      animation: fadeIn 0.5s ease-out;
+      overflow-y: auto;
+      max-height: 80vh;
+      text-align: left;
+      text-align: justify;
+    }
+
+
+    /* Accept Button */
+    #acceptButton {
+      background-color: #0047ab;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 20px;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+
+    #acceptButton:hover {
+      background-color: #00377d;
+      transform: scale(1.05);
+    }
+
+
+    /* Form Styling (Inside Modal) */
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-top: 20px;
+    }
+
+
+    input[type="text"], input[type="email"], textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+      color: #333;
+    }
+
+
+    button[type="submit"] {
+      background-color: #0047ab;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      width: 100%;
+    }
+
+
+    button[type="submit"]:hover {
+      background-color: #00377d;
+    }
+
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Profile Section -->
+    <div class="profile">
+      <img src="gallery_gen/quantum-dev-favicon.png" alt="Profile Picture">
+      <h1>QuantumDev</h1>
+      <div class="job-description">
+        Scripter & UI Dev
+      </div>
+      <div class="job-description">
+        Owner & Main Developer @ LuckySAM Productions | Co-Owner, Lead HR, Lead Developer @ Waitrose Shopping | Former Developer @ Swirlys Cafe (deprecated) | Developer @ Pentagon Group | Owner @ Globe Hangout
+      </div>
+    </div>
+
+
+    <!-- Introduction -->
+    <div class="intro">
+      Hi! I'm Lakshin, a teenage developer with 3+ years of experience in Roblox Studio.
+      My online name is Quantum.
+      I’m passionate about coding, designing, and creating innovative projects. 
+      My goal is to become a Full Stack Developer and start my own company in the future! 
+      If you're looking to hire me for my Roblox Studio skills, feel free to reach out through my Discord server linked below.
+    </div>
+
+
+    <!-- Icons Section -->
+    <div class="icons">
+      <a href="https://outlook.live.com/mail/0/deeplink/compose/?mailtouri=mailto%3alh140313%40outlook.com&bO=1&sessionId=ca690e7f-e2c9-475a-a290-e3a3ef5a8cf8" target="_blank">
+        <img src="https://img.icons8.com/ios-filled/50/000000/email-open.png" alt="Email">
+      </a>
+      <a href="https://github.com/lakshinhemachandran" target="_blank">
+        <img src="https://img.icons8.com/ios-filled/50/000000/github.png" alt="GitHub">
+      </a>
+      <a href="https://discord.gg/ATk4wsJP42" target="_blank">
+        <img src="https://img.icons8.com/ios-filled/50/000000/discord-logo.png" alt="Discord">
+      </a>
+      <a href="https://youtube.com/@ItsQuantumDev_YT" target="_blank">
+        <img src="https://img.icons8.com/ios-filled/50/000000/youtube-play.png" alt="YouTube">
+      </a>
+      <a href="https://www.roblox.com/users/3314294422/profile" target="_blank">
+        <img src="https://img.icons8.com/ios-filled/50/000000/roblox.png" alt="Roblox">
+      </a>
+    </div>
+
+
+    <!-- Divider -->
+    <hr>
+
+
+    <!-- Hire Me Section -->
+    <button class="hire-button" onclick="showTerms()">Hire Me</button>
+  </div>
+<!-- My Work Section -->
+<div class="my-work">
+  <h2>My Work</h2>
+
+
+  <!-- Project 1 -->
+  <div class="project">
+    <h3>Project 1: Interactive Game UI</h3>
+    <img src="gallery_gen/Project1.png" alt="Project 1">
+    <div class="project-details">
+      <p class="justify">
+        Developed a responsive and user-friendly game interface for an arm wrestling game in Roblox. 
+        The UI included a Robux/In-Game Points Shop, Event Button, Stats, In-Game Points Counter, 
+        Strength Count, Settings, etc. Game not public.
+      </p>
+    </div>
+  </div>
+
+
+  <!-- Project 2 -->
+  <div class="project">
+    <h3>Project 2: LuckyTalks</h3>
+    <div class="project-images">
+      <img src="gallery_gen/Project2-1.png" alt="Project 2 - 1">
+      <img src="gallery_gen/Project2-2.png" alt="Project 2 - 2">
+    </div>
+    <div class="project-details">
+      <p class="justify">
+        Created a place for famous Roblox streamers to talk to fans. Includes a stage, 
+        working stage lights (moves and changes color), 200+ seats, backstage, and a welcome hall. 
+        The owner and I quit the game for other reasons.
+      </p>
+    </div>
+  </div>
+
+
+  <!-- Project 3 -->
+  <div class="project">
+    <h3>Project 3: Shopping Center - Currently In Progress</h3>
+    <div class="project-details">
+      <p class="justify">
+        Creating a modern shopping center with a responsive, user-friendly UI, 
+        famous snacks/drinks, working registers, etc.
+      </p>
+    </div>
+  </div>
+</div>
+</div>
+</body>
+
+
+
+  <!-- Modal for Terms -->
+  <div id="termsModal" class="modal">
+    <div class="modal-content">
+      <h2>Terms and Conditions</h2>
+      <p>
+        By hiring QuantumDev, you agree to the following terms: 
+        DISCLAIMER, TERMS OF USE, AND LIMITATION OF LIABILITY
+1. INTRODUCTION
+This Disclaimer, along with the Terms of Use, governs the use of all content, services, and products provided by Lakshin Hemachandran ("Lakshin"), also known as "QuantumDev," "Quantum," "ItsQuantumDev," or any other associated names (hereinafter referred to as "Provider"). By accessing, using, or engaging with any materials, services, or content provided by the Provider, you agree to be bound by these terms. If you do not agree, you must discontinue use immediately.
+2. NO WARRANTIES OR GUARANTEES
+All content, materials, services, and information provided by the Provider are made available on an "AS IS" and "AS AVAILABLE" basis, without any warranties or guarantees, express or implied. The Provider makes no representations regarding the accuracy, reliability, completeness, or fitness for any purpose of the content or services provided. To the fullest extent permitted by law, all warranties, including but not limited to warranties of merchantability, fitness for a particular purpose, and non-infringement, are expressly disclaimed.
+3. LIMITATION OF LIABILITY
+To the maximum extent permitted by applicable law, under no circumstances shall the Provider, including but not limited to any affiliates, partners, licensors, employees, or agents, be liable for any direct, indirect, incidental, consequential, special, exemplary, or punitive damages, including but not limited to loss of data, business interruption, financial losses, personal injuries, reputational damage, or legal claims, even if advised of the possibility of such damages, arising from or in connection with:
+The use, inability to use, or reliance on any content, service, or product provided by the Provider.
+Any errors, omissions, inaccuracies, or technical failures.
+Any interactions, transactions, or disputes with third parties resulting from use of the Provider’s content or services.
+Any unauthorized access to, or alteration of, data transmissions.
+Any claims or actions related to copyright, trademark, or other intellectual property matters.
+4. INDEMNIFICATION
+By using the Provider’s services or content, you agree to indemnify, defend, and hold harmless the Provider and any affiliates, partners, employees, or agents from and against any and all claims, liabilities, damages, losses, expenses, and legal fees arising out of or related to your use of the services, content, or products, including but not limited to violations of these Terms.
+5. EXTERNAL LINKS AND THIRD-PARTY SERVICES
+The Provider may provide links to external sites or services. These are provided for convenience only, and the Provider assumes no responsibility for the accuracy, security, or practices of such third-party sites. Use of any linked third-party services is at the user's own risk.
+6. NO PROFESSIONAL ADVICE
+Nothing provided by the Provider constitutes legal, financial, medical, or other professional advice. Users should seek qualified professional counsel where applicable.
+7. FORCE MAJEURE
+The Provider shall not be held liable for failure or delay in performance due to causes beyond reasonable control, including but not limited to natural disasters, cyberattacks, government actions, or acts of God.
+8. SEVERABILITY
+If any provision of this Disclaimer or Terms of Use is found to be unenforceable or invalid, that provision shall be limited or removed to the minimum extent necessary, and the remainder shall remain in full force and effect.
+9. GOVERNING LAW AND JURISDICTION
+These Terms shall be governed and construed in accordance with the laws of Virginia, United States.
+Any disputes shall be resolved exclusively in the courts of Virginia, United States.
+10. CHANGES TO THESE TERMS
+The Provider reserves the right to modify these terms at any time without notice. Continued use of any services or content after changes are made constitutes acceptance of the revised terms.
+11. CONTACT INFORMATION
+For inquiries related to these Terms, you may contact the Provider at: lh140313@outlook.com
+By using any services, products, or content provided by the Provider, you acknowledge that you have read, understood, and agreed to these terms and conditions.
+
+
+
+      </p>
+      <button id="acceptButton" onclick="acceptTerms()">I Accept</button>
+    </div>
+  </div>
+
+
+  <!-- Modal for Form -->
+  <div id="formModal" class="modal">
+    <div class="modal-content">
+      <h2>Contact Form</h2>
+      <form action="https://formsubmit.co/lh140313@outlook.com" method="POST">
+        <input type="text" name="Discord Username" required placeholder="Discord Username">
+        <input type="email" name="email" required placeholder="Email">
+        <textarea name="message" rows="4" required placeholder="Your Message"></textarea>
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  </div>
+
+
+  <script>
+    function showTerms() {
+      document.getElementById("termsModal").style.display = "block";
+    }
+
+
+    function acceptTerms() {
+      document.getElementById("termsModal").style.display = "none";
+      document.getElementById("formModal").style.display = "block";
+    }
+
+
+    // Close modal when clicking outside of it
+    window.onclick = function(event) {
+      if (event.target === document.getElementById("termsModal") || event.target === document.getElementById("formModal")) {
+        document.getElementById("termsModal").style.display = "none";
+        document.getElementById("formModal").style.display = "none";
+      }
+    }
+  </script>
+</body>
+</html>
+
+
+
+
