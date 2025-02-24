@@ -509,6 +509,65 @@
     </div>
 
   <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    // Create audio context - this is more powerful than the Audio element
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    const audioContext = new AudioContext();
+    
+    // Create audio element
+    const audio = new Audio('ransom.mp3');
+    audio.loop = true;
+    
+    // Create media element source
+    const source = audioContext.createMediaElementSource(audio);
+    
+    // Create gain node for volume control
+    const gainNode = audioContext.createGain();
+    gainNode.gain.value = 0; // Start with 0 volume
+    
+    // Connect our nodes
+    source.connect(gainNode);
+    gainNode.connect(audioContext.destination);
+    
+    const startAudio = async () => {
+        try {
+            // Start playing muted
+            await audio.play();
+            
+            // Gradually increase volume over 1 second
+            gainNode.gain.linearRampToValueAtTime(0.5, audioContext.currentTime + 1);
+            
+            console.log('Audio started successfully');
+        } catch (err) {
+            console.log('Initial autoplay failed:', err);
+            
+            // Fallback: Wait for first interaction
+            const startOnInteraction = async () => {
+                await audioContext.resume();
+                audio.play();
+                gainNode.gain.linearRampToValueAtTime(0.5, audioContext.currentTime + 1);
+                
+                // Remove all interaction listeners once played
+                ['click', 'touchstart', 'keydown'].forEach(event => 
+                    document.removeEventListener(event, startOnInteraction));
+            };
+
+            // Add listeners for common interaction events
+            ['click', 'touchstart', 'keydown'].forEach(event => 
+                document.addEventListener(event, startOnInteraction, { once: true }));
+        }
+    };
+
+    // Try to start audio immediately
+    startAudio();
+    
+    // Handle tab visibility
+    document.addEventListener('visibilitychange', () => {
+        if (!document.hidden && audio.paused) {
+            audio.play();
+        }
+    });
+});
     // Modal Functions
     function showTerms() {
       document.getElementById("termsModal").style.display = "block";
