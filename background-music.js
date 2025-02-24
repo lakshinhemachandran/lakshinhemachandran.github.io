@@ -1,69 +1,109 @@
-class BackgroundMusicPlayer {
+class PlaylistPlayer {
     constructor() {
-        this.audio = new Audio('ransom.mp3'); // Updated path since file is in root
-        this.audio.loop = true;
-        this.audioContext = null;
-        this.isInitialized = false;
+        this.playlist = [
+            { src: 'ransom.mp3', title: 'Ransom' },
+            { src: 'notlikeus.mp3', title: 'Not Like Us' }
+        ];
         
-        this.lastTime = parseFloat(localStorage.getItem('musicTime')) || 0;
-        this.wasPlaying = localStorage.getItem('musicPlaying') === 'true';
+        this.currentIndex = parseInt(localStorage.getItem('currentSongIndex')) || 0;
+        this.audio = new Audio(this.playlist[this.currentIndex].src);
+        this.audio.currentTime = parseFloat(localStorage.getItem('musicTime')) || 0;
+        this.shouldPlay = localStorage.getItem('musicPlaying') === 'true';
+
+        this.setupEvents();
         
-        this.initializeAudioContext();
-        this.setupEventListeners();
+        if (this.shouldPlay) {
+            this.attemptPlay();
+        }
     }
 
-    initializeAudioContext() {
-        const AudioContext = window.AudioContext || window.webkitAudioContext;
-        this.audioContext = new AudioContext();
-        
-        const source = this.audioContext.createMediaElementSource(this.audio);
-        const gainNode = this.audioContext.createGain();
-        gainNode.gain.value = 0.5;
-        
-        source.connect(gainNode);
-        gainNode.connect(this.audioContext.destination);
-    }
+    setupEvents() {
+        // Handle song ending - play next song
+        this.audio.addEventListener('ended', () => {
+            this.playNext();
+        });
 
-    setupEventListeners() {
+        // Save state before page unload
         window.addEventListener('beforeunload', () => {
-            localStorage.setItem('musicTime', this.audio.currentTime.toString());
-            localStorage.setItem('musicPlaying', (!this.audio.paused).toString());
+            localStorage.setItem('musicTime', this.audio.currentTime);
+            localStorage.setItem('musicPlaying', !this.audio.paused);
+            localStorage.setItem('currentSongIndex', this.currentIndex);
         });
 
+        // Handle tab visibility
         document.addEventListener('visibilitychange', () => {
-            if (!document.hidden && this.wasPlaying) {
-                this.audio.play();
+            if (!document.hidden && this.shouldPlay) {
+                this.attemptPlay();
             }
         });
 
-        const startPlayback = async () => {
-            if (!this.isInitialized) {
-                await this.audioContext.resume();
-                this.audio.currentTime = this.lastTime;
-                
-                try {
-                    await this.audio.play();
-                    this.isInitialized = true;
-                } catch (err) {
-                    console.log('Autoplay prevented:', err);
-                }
+        // Handle user interaction
+        const startOnInteraction = () => {
+            if (this.shouldPlay) {
+                this.attemptPlay();
             }
+            
+            // Add click handler for future plays
+            document.addEventListener('click', () => {
+                if (!this.audio.paused) return;
+                this.shouldPlay = true;
+                this.attemptPlay();
+            });
+
+            // Remove the initial interaction listeners
+            ['click', 'touchstart', 'keydown'].forEach(event => 
+                document.removeEventListener(event, startOnInteraction));
         };
 
-        startPlayback();
+        // Add initial interaction listeners
+        ['click', 'touchstart', 'keydown'].forEach(event => 
+            document.addEventListener(event, startOnInteraction));
+    }
 
-        const userInteractionEvents = ['click', 'touchstart', 'keydown'];
-        const handleUserInteraction = async () => {
-            await startPlayback();
-            userInteractionEvents.forEach(event => 
-                document.removeEventListener(event, handleUserInteraction));
-        };
+    async attemptPlay() {
+        try {
+            await this.audio.play();
+            this.shouldPlay = true;
+            console.log(`Now playing: ${this.playlist[this.currentIndex].title}`);
+        } catch (err) {
+            console.log('Playback failed:', err);
+            this.shouldPlay = false;
+        }
+    }
 
-        userInteractionEvents.forEach(event => 
-            document.addEventListener(event, handleUserInteraction));
+    playNext() {
+        // Save current time and state
+        localStorage.setItem('musicTime', '0'); // Reset time for next song
+        localStorage.setItem('musicPlaying', 'true');
+        
+        // Move to next song (loop back to start if at end)
+        this.currentIndex = (this.currentIndex + 1) % this.playlist.length;
+        localStorage.setItem('currentSongIndex', this.currentIndex);
+        
+        // Create new audio element with next song
+        const oldAudio = this.audio;
+        this.audio = new Audio(this.playlist[this.currentIndex].src);
+        
+        // Setup ended event for new audio element
+        this.audio.addEventListener('ended', () => {
+            this.playNext();
+        });
+        
+        // Start playing new song
+        this.attemptPlay();
+        
+        // Clean up old audio element
+        oldAudio.pause();
+        oldAudio.src = '';
     }
 }
 
+// Create player instance when page loads
 document.addEventListener('DOMContentLoaded', () => {
-    window.musicPlayer = new BackgroundMusicPlayer();
+    window.musicPlayer = new PlaylistPlayer();
 });
+
+// Fallback for when DOMContentLoaded already fired
+if (document.readyState === 'complete') {
+    window.musicPlayer = new PlaylistPlayer();
+}
