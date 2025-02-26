@@ -1,536 +1,610 @@
 <!DOCTYPE html>
 <html lang="en">
-  
+
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" href="/gallery_gen/quantum-dev-high-resolution-logo-transparent.png" class="circular-favicon">
-  <meta name="keywords" content="Quantum, QuantumDev, ItsQuantumDev, ItsQuantumDev_YT, Dev">
-  <title>QuantumDev</title>
-  <style>
-    .circular-favicon {
-      border-radius: 50%;
-      -webkit-mask-image: -webkit-radial-gradient(circle, white 100%, black 100%);
-    }
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/gallery_gen/quantum-dev-high-resolution-logo-transparent.png"
+        class="circular-favicon">
+    <meta name="keywords" content="Quantum, QuantumDev, ItsQuantumDev, ItsQuantumDev_YT, Dev">
+    <title>QuantumDev</title>
+    <style>
+        .circular-favicon {
+            border-radius: 50%;
+            -webkit-mask-image: -webkit-radial-gradient(circle, white 100%, black 100%);
+        }
 
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #0047ab;
-      color: white;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-      line-height: 1.6;
-      animation: fadeIn 2s ease-out;
-    }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000000;
+            color: white;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            line-height: 1.6;
+            animation: fadeIn 2s ease-out;
+        }
 
-    @keyframes fadeIn {
-      0% {
-        opacity: 0;
-      }
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
 
-      100% {
-        opacity: 1;
-      }
-    }
+            100% {
+                opacity: 1;
+            }
+        }
 
-    .container {
-      max-width: 900px;
-      margin: 50px auto;
-      padding: 30px;
-      background-color: #ffffff;
-      color: #333;
-      border-radius: 15px;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-      animation: slideUp 1s ease-out;
-      position: relative;
-    }
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #000000;
+            color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(255, 255, 255, 0.3);
+            animation: slideUp 1s ease-out;
+            position: relative;
+        }
 
-    @keyframes slideUp {
-      0% {
-        transform: translateY(50px);
-        opacity: 0;
-      }
+        @keyframes slideUp {
+            0% {
+                transform: translateY(50px);
+                opacity: 0;
+            }
 
-      100% {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
 
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-bottom: 20px;
-      border-bottom: 2px solid #0073e6;
-    }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #ffffff;
+        }
 
-    header h1 {
-      font-size: 24px;
-      margin: 0;
-    }
+        header h1 {
+            font-size: 24px;
+            margin: 0;
+        }
 
-    nav {
-      position: absolute;
-      top: 10px;
-      right: 20px;
-    }
+        nav {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+        }
 
-    nav ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      gap: 15px;
-    }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 15px;
+        }
 
-    nav ul li {
-      display: inline;
-    }
+        nav ul li {
+            display: inline;
+        }
 
-    nav ul li a {
-      color: #0073e6;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
 
-    nav ul li a:hover {
-      color: #005bb5;
-    }
+        nav ul li a:hover {
+            color: #cccccc;
+        }
 
-    .content {
-      padding: 20px 0;
-    }
+        .content {
+            padding: 20px 0;
+        }
 
-    .icons {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin: 20px 0;
-    }
+        .icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
 
-    .icons a {
-      display: inline-block;
-      width: 50px;
-      height: 50px;
-      background-color: #f4f4f4;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transition: background-color 0.3s, transform 0.3s;
-    }
+        .icons a {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+            transition: background-color 0.3s, transform 0.3s;
+        }
 
-    .icons a:hover {
-      background-color: #005bb5;
-      transform: scale(1.2);
-    }
+        .icons a:hover {
+            background-color: #cccccc;
+            transform: scale(1.2);
+        }
 
-    .icons img {
-      width: 24px;
-      height: 24px;
-    }
+        .icons img {
+            width: 24px;
+            height: 24px;
+        }
 
-    .youtube-modal {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.7);
-      animation: fadeIn 0.3s ease-out;
-    }
+        .youtube-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            animation: fadeIn 0.3s ease-out;
+        }
 
-    .youtube-modal-content {
-      background-color: #ffffff;
-      margin: 60px auto;
-      padding: 25px;
-      border-radius: 15px;
-      width: 90%;
-      max-width: 600px;
-      max-height: 80vh;
-      color: #333;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-      animation: slideDown 0.5s ease-out;
-      overflow-y: auto;
-      scrollbar-width: thin;
-      scrollbar-color: #0047ab #f0f0f0;
-      position: relative;
-    }
+        .youtube-modal-content {
+            background-color: #000000;
+            margin: 60px auto;
+            padding: 25px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            color: #ffffff;
+            box-shadow: 0 6px 12px rgba(255, 255, 255, 0.3);
+            animation: slideDown 0.5s ease-out;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: #000000 #f0f0f0;
+            position: relative;
+        }
 
-    @keyframes slideDown {
-      from {
-        transform: translateY(-100px);
-        opacity: 0;
-      }
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
 
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
 
-    .profile {
-      position: relative;
-      margin-bottom: 40px;
-      animation: fadeIn 1.5s ease-out;
-    }
+        .profile {
+            position: relative;
+            margin-bottom: 40px;
+            animation: fadeIn 1.5s ease-out;
+        }
 
-    .profile img {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid #0047ab;
-      margin-top: -70px;
-      transition: transform 0.3s ease;
-    }
+        .profile img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #ffffff;
+            margin-top: -70px;
+            transition: transform 0.3s ease;
+        }
 
-    .profile img:hover {
-      transform: scale(1.1);
-    }
+        .profile img:hover {
+            transform: scale(1.1);
+        }
 
-    .profile h1 {
-      font-size: 24px;
-      margin: 10px 0;
-      animation: slideUp 1.5s ease-out;
-    }
+        .profile h1 {
+            font-size: 24px;
+            margin: 10px 0;
+            animation: slideUp 1.5s ease-out;
+            color: #ffffff; /* Neon white */
+            text-shadow:
+                0 0 7px #fff,
+                0 0 10px #fff,
+                0 0 21px #fff,
+                0 0 42px #0fa,
+                0 0 82px #0fa,
+                0 0 92px #0fa,
+                0 0 102px #0fa,
+                0 0 151px #0fa;
+        }
 
-    .intro {
-      font-size: 16px;
-      margin-bottom: 20px;
-      color: #555;
-      animation: fadeIn 2.5s ease-out;
-    }
-         /* Add this to your existing CSS */ .circular-favicon { border-radius:
-      50%; -webkit-mask-image: -webkit-radial-gradient(circle, white 100%, black
-      100%); } body { font-family: Arial, sans-serif; background-color: #0047ab;
-      color: white; margin: 0; padding: 0; text-align: center; line-height: 1.6;
-      animation: fadeIn 2s ease-out; } @keyframes fadeIn { 0% { opacity: 0; }
-      100% { opacity: 1; } } .container { max-width: 900px; margin: 50px auto;
-      padding: 30px; background-color: #ffffff; color: #333; border-radius: 15px;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); animation: slideUp 1s ease-out;
-      } @keyframes slideUp { 0% { transform: translateY(50px); opacity: 0; }
-      100% { transform: translateY(0); opacity: 1; } } .profile { position: relative;
-      margin-bottom: 40px; animation: fadeIn 1.5s ease-out; } .profile img {
-      width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border:
-      4px solid #0047ab; margin-top: -70px; transition: transform 0.3s ease;
-      } .profile img:hover { transform: scale(1.1); } .profile h1 { font-size:
-      24px; margin: 10px 0; animation: slideUp 1.5s ease-out; } .job-description
-      { font-size: 16px; font-weight: bold; color: #555; margin-bottom: 20px;
-      animation: fadeIn 2s ease-out; } .intro { font-size: 16px; margin-bottom:
-      20px; color: #555; animation: fadeIn 2.5s ease-out; } .icons { display:
-      flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin: 20px
-      0; animation: fadeIn 3s ease-out; } .icons a { display: inline-block; width:
-      50px; height: 50px; background-color: #f4f4f4; border-radius: 50%; display:
-      flex; justify-content: center; align-items: center; box-shadow: 0 4px 6px
-      rgba(0, 0, 0, 0.1); transition: background-color 0.3s, transform 0.3s;
-      } .icons a:hover { background-color: #005bb5; transform: scale(1.2); }
-      .icons img { width: 24px; height: 24px; } hr { border: 2px solid #0073e6;
-      margin: 40px 0; animation: fadeIn 4s ease-out; } .hire-button { background-color:
-      #0047ab; color: white; border: none; padding: 12px 24px; font-size: 16px;
-      border-radius: 8px; cursor: pointer; width: 100%; margin-top: 20px; transition:
-      background-color 0.3s, transform 0.3s; } .hire-button:hover { background-color:
-      #00377d; transform: scale(1.05); } /* Modal Styles */ .modal { display:
-      none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height:
-      100%; background-color: rgba(0, 0, 0, 0.7); padding-top: 60px; } .modal-content
-      { background-color: #333; margin: auto; padding: 20px; border-radius: 10px;
-      width: 70%; max-width: 800px; color: #fff; animation: fadeIn 0.5s ease-out;
-      overflow-y: auto; max-height: 80vh; text-align: left; text-align: justify;
-      } /* Accept Button */ #acceptButton { background-color: #0047ab; color:
-      white; border: none; padding: 12px 24px; font-size: 16px; border-radius:
-      8px; cursor: pointer; width: 100%; margin-top: 20px; transition: background-color
-      0.3s, transform 0.3s; } #acceptButton:hover { background-color: #00377d;
-      transform: scale(1.05); } /* Form Styling (Inside Modal) */ form { display:
-      flex; flex-direction: column; align-items: flex-start; margin-top: 20px;
-      } input[type="text"], input[type="email"], textarea { width: 100%; padding:
-      12px; margin: 10px 0; border-radius: 8px; border: 1px solid #ccc; font-size:
-      16px; color: #333; } button[type="submit"] { background-color: #0047ab;
-      color: white; border: none; padding: 12px 24px; font-size: 16px; border-radius:
-      8px; cursor: pointer; transition: background-color 0.3s; width: 100%; }
-      button[type="submit"]:hover { background-color: #00377d; } /* Discord Status
-      */ .discord-status { margin-top: 20px; font-size: 18px; color: #555; animation:
-      fadeIn 3s ease-out; } /* Add to your existing style section */ .discord-card
-      { background-color: #2f3136; border-radius: 8px; padding: 15px; margin:
-      20px auto; max-width: 400px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      } .discord-header { margin-bottom: 15px; } .discord-title { color: #fff;
-      font-size: 16px; font-weight: bold; } .discord-content { display: flex;
-      align-items: flex-start; gap: 15px; } .discord-avatar-container { position:
-      relative; } .discord-avatar { width: 80px; height: 80px; border-radius:
-      50%; border: 4px solid #18191c; } .status-indicator { position: absolute;
-      bottom: 0; right: 0; width: 20px; height: 20px; border-radius: 50%; border:
-      4px solid #2f3136; } .status-online { background-color: #3ba55c; } .status-idle
-      { background-color: #faa81a; } .status-dnd { background-color: #ed4245;
-      } .status-offline { background-color: #747f8d; } .discord-info { flex-grow:
-      1; } .discord-name-container { display: flex; align-items: center; gap:
-      10px; margin-bottom: 8px; } #discordUsername { color: #fff; font-weight:
-      bold; font-size: 20px; } .discord-badges { display: flex; gap: 5px; } .discord-badge
-      { width: 22px; height: 22px; } .discord-activity { color: #dcddde; font-size:
-      14px; margin-bottom: 4px; } .discord-custom-status { color: #dcddde; font-size:
-      14px; display: flex; align-items: center; gap: 5px; } /* Add to your existing
-      CSS */ .spotify-activity { display: flex; align-items: center; color: #1DB954;
-      /* Spotify green */ margin-top: 8px; } .custom-status { display: flex;
-      align-items: center; color: #dcddde; margin-top: 8px; } .discord-badge
-      { width: 22px; height: 22px; margin-right: 4px; } /* Add these styles to
-      your existing CSS */ .connection-status { display: flex; align-items: center;
-      gap: 8px; margin-top: 8px; color: #dcddde; } .connection-icon { width:
-      16px; height: 16px; } .spotify-activity { display: flex; align-items: center;
-      gap: 12px; color: #dcddde; margin-top: 8px; } .spotify-info { display:
-      flex; flex-direction: column; } .spotify-listening { font-weight: bold;
-      color: #1DB954; /* Spotify green */ } .connection-name { color: #dcddde;
-      font-weight: bold; } .connection-details { color: #a3a6aa; font-size: 0.9em;
-      } .avatar-wrapper { position: relative; width: 80px; height: 80px; } .discord-avatar
-      { width: 80px; height: 80px; border-radius: 50%; border: 4px solid #18191c;
-      position: relative; z-index: 1; } .avatar-decoration { position: absolute;
-      top: -15px; left: -15px; width: 110px; height: 110px; z-index: 2; pointer-events:
-      none; } .status-indicator { position: absolute; bottom: 0; right: 0; width:
-      20px; height: 20px; border-radius: 50%; border: 4px solid #2f3136; z-index:
-      3; } .lanyard-img img { width: 100%; max-width: 320px; border-radius: 10px;
-      } /* YouTube Notification Modal */ .youtube-modal { display: none; position:
-      fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color:
-      rgba(0, 0, 0, 0.7); animation: fadeIn 0.3s ease-out; } .youtube-modal-content
-      { background-color: #ffffff; margin: 60px auto; padding: 25px; border-radius:
-      15px; width: 90%; max-width: 600px; max-height: 80vh; color: #333; box-shadow:
-      0 6px 12px rgba(0, 0, 0, 0.3); animation: slideDown 0.5s ease-out; overflow-y:
-      auto; scrollbar-width: thin; scrollbar-color: #0047ab #f0f0f0; position:
-      relative; } /* Custom Scrollbar */ .youtube-modal-content::-webkit-scrollbar
-      { width: 8px; } .youtube-modal-content::-webkit-scrollbar-track { background:
-      #f0f0f0; border-radius: 4px; } .youtube-modal-content::-webkit-scrollbar-thumb
-      { background: #0047ab; border-radius: 4px; } .youtube-modal-content::-webkit-scrollbar-thumb:hover
-      { background: #00377d; } @keyframes slideDown { from { transform: translateY(-100px);
-      opacity: 0; } to { transform: translateY(0); opacity: 1; } } @keyframes
-      fadeIn { from { opacity: 0; } to { opacity: 1; } } .video-header { display:
-      flex; align-items: center; margin-bottom: 20px; border-bottom: 2px solid
-      #0047ab; padding-bottom: 15px; position: sticky; top: 0; background-color:
-      #ffffff; z-index: 2; } .video-header img { width: 50px; height: 50px; border-radius:
-      50%; margin-right: 15px; } .video-header h3 { color: #0047ab; margin: 0;
-      } .video-thumbnail { width: 100%; border-radius: 10px; margin-bottom: 15px;
-      } .video-title { font-size: 18px; font-weight: bold; margin-bottom: 10px;
-      color: #333; } .video-stats { display: flex; gap: 15px; color: #666; font-size:
-      14px; margin-bottom: 15px; } .video-description { font-size: 14px; line-height:
-      1.5; color: #555; margin-bottom: 20px; padding-right: 5px; } .youtube-modal-buttons
-      { display: flex; gap: 10px; justify-content: space-between; margin-top:
-      20px; position: sticky; bottom: 0; background-color: #ffffff; padding-top:
-      15px; border-top: 1px solid #eee; z-index: 2; } .youtube-modal-button {
-      padding: 12px 24px; border-radius: 8px; cursor: pointer; font-size: 16px;
-      border: none; transition: transform 0.3s, background-color 0.3s; flex:
-      1; } .youtube-modal-button:hover { transform: scale(1.05); } .watch-now-button
-      { background-color: #ff0000; color: white; } .watch-now-button:hover {
-      background-color: #cc0000; } .continue-button { background-color: #0047ab;
-      color: white; } .continue-button:hover { background-color: #00377d; } /*
-      Content Container */ .modal-content-container { position: relative; padding:
-      0 5px; } /* Media Queries for better mobile experience */ @media (max-width:
-      768px) { .youtube-modal-content { margin: 30px auto; width: 95%; max-height:
-      85vh; } .youtube-modal-button { padding: 10px 16px; font-size: 14px; }
-      .video-header { padding-bottom: 10px; } .video-header img { width: 40px;
-      height: 40px; } .video-title { font-size: 16px; } }
-  </style>
+        .intro {
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: #ffffff;
+            animation: fadeIn 2.5s ease-out;
+        }
+
+        .hire-button {
+            background-color: #ffffff;
+            color: black;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .hire-button:hover {
+            background-color: #cccccc;
+            transform: scale(1.05);
+        }
+
+        .discord-card {
+            background-color: #2f3136;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px auto;
+            max-width: 400px;
+            box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+        }
+
+        .discord-header {
+            margin-bottom: 15px;
+        }
+
+        .discord-title {
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .discord-content {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .discord-avatar-container {
+            position: relative;
+        }
+
+        .discord-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 4px solid #18191c;
+        }
+
+        .status-indicator {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 4px solid #2f3136;
+        }
+
+        .status-online {
+            background-color: #3ba55c;
+        }
+
+        .status-idle {
+            background-color: #faa81a;
+        }
+
+        .status-dnd {
+            background-color: #ed4245;
+        }
+
+        .status-offline {
+            background-color: #747f8d;
+        }
+
+        .discord-info {
+            flex-grow: 1;
+        }
+
+        .discord-name-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        #discordUsername {
+            color: #fff;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .discord-badges {
+            display: flex;
+            gap: 5px;
+        }
+
+        .discord-badge {
+            width: 22px;
+            height: 22px;
+        }
+
+        .discord-activity {
+            color: #dcddde;
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .discord-custom-status {
+            color: #dcddde;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .spotify-activity {
+            display: flex;
+            align-items: center;
+            color: #1DB954;
+            margin-top: 8px;
+        }
+
+        .custom-status {
+            display: flex;
+            align-items: center;
+            color: #dcddde;
+            margin-top: 8px;
+        }
+
+        .discord-badge {
+            width: 22px;
+            height: 22px;
+            margin-right: 4px;
+        }
+
+        .connection-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 8px;
+            color: #dcddde;
+        }
+
+        .connection-icon {
+            width: 16px;
+            height: 16px;
+        }
+
+        .spotify-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .spotify-listening {
+            font-weight: bold;
+            color: #1DB954;
+        }
+
+        .connection-name {
+            color: #dcddde;
+            font-weight: bold;
+        }
+
+        .connection-details {
+            color: #a3a6aa;
+            font-size: 0.9em;
+        }
+
+        .avatar-wrapper {
+            position: relative;
+            width: 80px;
+            height: 80px;
+        }
+
+        .avatar-decoration {
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            width: 110px;
+            height: 110px;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .lanyard-img img {
+            width: 100%;
+            max-width: 320px;
+            border-radius: 10px;
+        }
+
+        .video-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #ffffff;
+            padding-bottom: 15px;
+            position: sticky;
+            top: 0;
+            background-color: #000000;
+            z-index: 2;
+        }
+
+        .video-header img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .video-header h3 {
+            color: #ffffff;
+            margin: 0;
+        }
+
+        .video-thumbnail {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .video-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        .video-stats {
+            display: flex;
+            gap: 15px;
+            color: #cccccc;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .video-description {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #cccccc;
+            margin-bottom: 20px;
+            padding-right: 5px;
+        }
+
+        .youtube-modal-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: space-between;
+            margin-top: 20px;
+            position: sticky;
+            bottom: 0;
+            background-color: #000000;
+            padding-top: 15px;
+            border-top: 1px solid #eeeeee;
+            z-index: 2;
+        }
+
+        .youtube-modal-button {
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            border: none;
+            transition: transform 0.3s, background-color 0.3s;
+            flex: 1;
+        }
+
+        .youtube-modal-button:hover {
+            transform: scale(1.05);
+        }
+
+        .watch-now-button {
+            background-color: #ff0000;
+            color: white;
+        }
+
+        .watch-now-button:hover {
+            background-color: #cc0000;
+        }
+
+        .continue-button {
+            background-color: #000000;
+            color: white;
+        }
+
+        .continue-button:hover {
+            background-color: #333333;
+        }
+
+        @media (max-width: 768px) {
+            .youtube-modal-content {
+                margin: 30px auto;
+                width: 95%;
+                max-height: 85vh;
+            }
+
+            .youtube-modal-button {
+                padding: 10px 16px;
+                font-size: 14px;
+            }
+
+            .video-header {
+                padding-bottom: 10px;
+            }
+
+            .video-header img {
+                width: 40px;
+                height: 40px;
+            }
+
+            .video-title {
+                font-size: 16px;
+            }
+        }
+    </style>
 </head>
 
 <body>
-  <div class="container">
-    <header>
-      <h1>Home</h1>
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="certifications.html">Certifications</a></li>
-          <li><a href="mywork.html">My Work</a></li>
-          <li><a href="jobs.html">Jobs</a></li>
-        </ul>
-      </nav>
-    </header>
-    <div class="content">
-      <!-- Profile Section -->
-      <div class="profile" data-animate="true">
-        <img src="https://yt3.googleusercontent.com/s2biSQ45avQeRfpLopl7GEuNoKro1vDg3ejQvBaBHRVIrv2wI0BHvS3A5cqLqmWS7VQ0TVw=s160-c-k-c0x00ffffff-no-rj" alt="Profile Picture">
-        <h1 id="title">QuantumDev</h1>
+    <div class="container">
+        <header>
+            <h1>Home</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="certifications.html">Certifications</a></li>
+                    <li><a href="mywork.html">My Work</a></li>
+                    <li><a href="jobs.html">Jobs</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div class="content">
+            <!-- Profile Section -->
+            <div class="profile" data-animate="true">
+                <img src="https://yt3.googleusercontent.com/s2biSQ45avQeRfpLopl7GEuNoKro1vDg3ejQvBaBHRVIrv2wI0BHvS3A5cqLqmWS7VQ0TVw=s160-c-k-c0x00ffffff-no-rj"
+                    alt="Profile Picture">
+                        <h1 class="neonText" id="title">QuantumDev</h1>
         <div class="job-description">UI Dev</div>
-      </div>
-      <!-- Introduction -->
-      <div class="intro" data-animate="true">
-        👋 Hi! I'm Lakshin, a teenage developer with 3+ years of experience in Roblox Studio. My online name is QuantumDev. I'm passionate about coding, designing, and creating innovative projects. My goal is to become a Full Stack Developer and start my own company in the future! My Best Friend is Noah (not his real name), you can contact him at @noahcoding on Discord! If you're looking to hire me for my Roblox Studio skills, feel free to reach out through my Discord server linked below.
+    </div>
+    <!-- Introduction -->
+    <div class="intro" data-animate="true">
+        👋 Hi! I'm Lakshin, a teenage developer with 3+ years of experience in Roblox Studio. My online name is QuantumDev. I'm passionate about coding, designing, and creating innovative projects.
         <br><br>
         <i><b>"Don't Give Up On Life Or Life Will Give Up On You"</b></i>
         <p>- Quantum</p>
-      </div>
-      <!-- Icons Section -->
-      <div class="icons" data-animate="true">
-        <a href="https://outlook.live.com/mail/0/deeplink/compose/?mailtouri=mailto%3alh140313%40outlook.com&bO=1&sessionId=ca690e7f-e2c9-475a-a290-e3a3ef5a8cf8" target="_blank">
-          <img src="https://img.icons8.com/ios-filled/50/000000/email-open.png" alt="Email">
+    </div>
+    <!-- Icons Section -->
+    <div class="icons" data-animate="true">
+        <a href="https://outlook.live.com/mail/0/deeplink/compose/?mailtouri=mailto%3alh140313%40outlook.com&bO=1&sessionId=ca690e7f-e2c9-475a-a290-e3a3ef5a8cf8"
+            target="_blank">
+            <img src="https://img.icons8.com/ios-filled/50/000000/email-open.png" alt="Email">
         </a>
         <a href="https://github.com/lakshinhemachandran" target="_blank">
-          <img src="https://img.icons8.com/ios-filled/50/000000/github.png" alt="GitHub">
+            <img src="https://img.icons8.com/ios-filled/50/000000/github.png" alt="GitHub">
         </a>
         <a href="https://discord.com/users/1333091618055655448" target="_blank">
-          <img src="https://img.icons8.com/ios-filled/50/000000/discord-logo.png" alt="Discord">
+            <img src="https://img.icons8.com/ios-filled/50/000000/discord-logo.png" alt="Discord">
         </a>
         <a href="https://youtube.com/@ItsQuantumDev_YT" target="_blank">
-          <img src="https://img.icons8.com/ios-filled/50/000000/youtube-play.png" alt="YouTube">
+            <img src="https://img.icons8.com/ios-filled/50/000000/youtube-play.png" alt="YouTube">
         </a>
         <a href="https://www.roblox.com/users/3314294422/profile" target="_blank">
-          <img src="https://img.icons8.com/ios-filled/50/000000/roblox.png" alt="Roblox">
+            <img src="https://img.icons8.com/ios-filled/50/000000/roblox.png" alt="Roblox">
         </a>
-      </div>
-      <div class="lanyard-img">
+    </div>
+    <div class="lanyard-img">
         <a href="https://discord.com/users/1333091618055655448">
-          <img id="lanyard-img" src="https://lanyard.cnrad.dev/api/1333091618055655448?idleMessage=Green%3A%20Ping%20me%20for%20help!%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Yellow%3A%20At%20school!%20%20%20%20%20%20%20%20%20%20%20%20Red%3A%20Do%20NOT%20Disturb%3B%20Probably%20in%20a%20meeting%2C%20or%20working.%20I%20won't%20respond%20to%20any%20pings.%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Gray%3A%20Sleeeeeping&showDisplayName=true&showActivity=true" alt="Discord Status">
+            <img id="lanyard-img"
+                src="https://lanyard.cnrad.dev/api/1333091618055655448?idleMessage=Green%3A%20Ping%20me%20for%20help!%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Yellow%3A%20Busy%20but%20I'll%20get%20back%20to%20you%20later.%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Red%3A%20Do%20not%20disturb!&animated=true"
+                alt="Discord Status">
         </a>
-      </div>
     </div>
-          <!-- Hire Me Section -->
-      <button class="hire-button" onclick="showTerms()">
-        Hire Me
-      </button>
-    </div>
-  </div>
-      <div id="youtubeModal" class="youtube-modal">
-      <div class="youtube-modal-content">
-        <div class="video-header">
-          <img src="/gallery_gen/quantum-dev-high-resolution-logo-transparent.png"
-          alt="QuantumDev Logo">
-          <h3>
-            New Video Upload!
-          </h3>
-        </div>
-        <img id="videoThumbnail" class="video-thumbnail" src="" alt="Video Thumbnail">
-        <div class="video-title" id="videoTitle">
-        </div>
-        <div class="video-stats">
-          <span id="videoViews">
-          </span>
-          <span id="videoLikes">
-          </span>
-        </div>
-        <div class="video-description" id="videoDescription">
-        </div>
-        <div class="youtube-modal-buttons">
-          <button id="watchNowButton" class="youtube-modal-button watch-now-button">
-            Watch Now!
-          </button>
-          <button class="youtube-modal-button continue-button" onclick="dismissYoutubeModal()">
-            Continue to Website
-          </button>
-        </div>
-      </div>
-    </div>
-    <!-- Modal for Terms -->
-    <div id="termsModal" class="modal">
-      <div class="modal-content">
-        <h2>
-          Terms and Conditions
-        </h2>
-        <p>
-          By hiring QuantumDev, you agree to the following terms: DISCLAIMER, TERMS
-          OF USE, AND LIMITATION OF LIABILITY 1. INTRODUCTION This Disclaimer, along
-          with the Terms of Use, governs the use of all content, services, and products
-          provided by Lakshin Hemachandran ("Lakshin"), also known as "QuantumDev,"
-          "Quantum," "ItsQuantumDev," or any other associated names (hereinafter
-          referred to as "Provider"). By accessing, using, or engaging with any materials,
-          services, or content provided by the Provider, you agree to be bound by
-          these terms. If you do not agree, you must discontinue use immediately.
-          2. NO WARRANTIES OR GUARANTEES All content, materials, services, and information
-          provided by the Provider are made available on an "AS IS" and "AS AVAILABLE"
-          basis, without any warranties or guarantees, express or implied. The Provider
-          makes no representations regarding the accuracy, reliability, completeness,
-          or fitness for any purpose of the content or services provided. To the
-          fullest extent permitted by law, all warranties, including but not limited
-          to warranties of merchantability, fitness for a particular purpose, and
-          non-infringement, are expressly disclaimed. 3. LIMITATION OF LIABILITY
-          To the maximum extent permitted by applicable law, under no circumstances
-          shall the Provider, including but not limited to any affiliates, partners,
-          licensors, employees, or agents, be liable for any direct, indirect, incidental,
-          consequential, special, exemplary, or punitive damages, including but not
-          limited to loss of data, business interruption, financial losses, personal
-          injuries, reputational damage, or legal claims, even if advised of the
-          possibility of such damages, arising from or in connection with: The use,
-          inability to use, or reliance on any content, service, or product provided
-          by the Provider. Any errors, omissions, inaccuracies, or technical failures.
-          Any interactions, transactions, or disputes with third parties resulting
-          from use of the Provider’s content or services. Any unauthorized access
-          to, or alteration of, data transmissions. Any claims or actions related
-          to copyright, trademark, or other intellectual property matters. 4. INDEMNIFICATION
-          By using the Provider’s services or content, you agree to indemnify, defend,
-          and hold harmless the Provider and any affiliates, partners, employees,
-          or agents from and against any and all claims, liabilities, damages, losses,
-          expenses, and legal fees arising out of or related to your use of the services,
-          content, or products, including but not limited to violations of these
-          Terms. 5. EXTERNAL LINKS AND THIRD-PARTY SERVICES The Provider may provide
-          links to external sites or services. These are provided for convenience
-          only, and the Provider assumes no responsibility for the accuracy, security,
-          or practices of such third-party sites. Use of any linked third-party services
-          is at the user's own risk. 6. NO PROFESSIONAL ADVICE Nothing provided by
-          the Provider constitutes legal, financial, medical, or other professional
-          advice. Users should seek qualified professional counsel where applicable.
-          7. FORCE MAJEURE The Provider shall not be held liable for failure or delay
-          in performance due to causes beyond reasonable control, including but not
-          limited to natural disasters, cyberattacks, government actions, or acts
-          of God. 8. SEVERABILITY If any provision of this Disclaimer or Terms of
-          Use is found to be unenforceable or invalid, that provision shall be limited
-          or removed to the minimum extent necessary, and the remainder shall remain
-          in full force and effect. 9. GOVERNING LAW AND JURISDICTION These Terms
-          shall be governed and construed in accordance with the laws of Virginia,
-          United States. Any disputes shall be resolved exclusively in the courts
-          of Virginia, United States. 10. CHANGES TO THESE TERMS The Provider reserves
-          the right to modify these terms at any time without notice. Continued use
-          of any services or content after changes are made constitutes acceptance
-          of the revised terms. 11. CONTACT INFORMATION For inquiries related to
-          these Terms, you may contact the Provider at: lh140313@outlook.com By using
-          any services, products, or content provided by the Provider, you acknowledge
-          that you have read, understood, and agreed to these terms and conditions.
-        </p>
-        <button id="acceptButton" onclick="acceptTerms()">
-          I Accept
-        </button>
-      </div>
-    </div>
-    <!-- Modal for Form -->
-    <div id="formModal" class="modal">
-      <div class="modal-content">
-        <h2>
-          Contact Form
-        </h2>
-        <form action="https://formsubmit.co/lh140313@outlook.com" method="POST">
-          <input type="text" name="Discord Username" required placeholder="Discord Username">
-          <input type="email" name="email" required placeholder="Email">
-          <textarea name="message" rows="4" required placeholder="Your Message">
-          </textarea>
-          <button type="submit">
-            Send
-          </button>
-        </form>
-      </div>
-    </div>
-  <script src="background-music.js"></script>
+</div>
 
-  <script>
-    
-    // Modal Functions
-    function showTerms() {
-      document.getElementById("termsModal").style.display = "block";
-    }
+<script src="background-music.js"></script>
 
-    function acceptTerms() {
-      document.getElementById("termsModal").style.display = "none";
-      document.getElementById("formModal").style.display = "block";
-    }
+<script>
 
-    // Close modal when clicking outside of it
-    window.onclick = function(event) {
-      if (event.target === document.getElementById("termsModal") || event.target === document.getElementById("formModal")) {
-        document.getElementById("termsModal").style.display = "none";
-        document.getElementById("formModal").style.display = "none";
-      }
-    }
 
     function updateLanyardImage() {
-      document.getElementById("lanyard-img").src = `https://lanyard.cnrad.dev/api/1333091618055655448?${Date.now()}`;
+        document.getElementById("lanyard-img").src = `https://lanyard.cnrad.dev/api/1333091618055655448?${Date.now()}`;
     }
 
     // Update the image every second
@@ -540,90 +614,90 @@
     const CHANNEL_ID = 'UC0K20jN4TETlWSWgdBJXnfg';
 
     async function checkNewUpload() {
-      try {
-        const response = await fetch(`https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${CHANNEL_ID}&order=date&part=snippet&type=video&maxResults=1`);
-        const data = await response.json();
+        try {
+            const response = await fetch(`https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${CHANNEL_ID}&order=date&part=snippet&type=video&maxResults=1`);
+            const data = await response.json();
 
-        if (data.items && data.items.length > 0) {
-          const latestVideo = data.items[0];
-          const videoId = latestVideo.id.videoId;
+            if (data.items && data.items.length > 0) {
+                const latestVideo = data.items[0];
+                const videoId = latestVideo.id.videoId;
 
-          // Get details including views and likes
-          const statsResponse = await fetch(`https://www.googleapis.com/youtube/v3/videos?key=${API_KEY}&id=${videoId}&part=statistics,snippet`);
-          const statsData = await statsResponse.json();
+                // Get details including views and likes
+                const statsResponse = await fetch(`https://www.googleapis.com/youtube/v3/videos?key=${API_KEY}&id=${videoId}&part=statistics,snippet`);
+                const statsData = await statsResponse.json();
 
-          if (statsData.items && statsData.items.length > 0) {
-            const videoStats = statsData.items[0].statistics;
-            const videoDetails = statsData.items[0].snippet;
+                if (statsData.items && statsData.items.length > 0) {
+                    const videoStats = statsData.items[0].statistics;
+                    const videoDetails = statsData.items[0].snippet;
 
-            // Get stored notification data
-            const lastNotification = JSON.parse(localStorage.getItem('lastVideoNotification') || '{}');
+                    // Get stored notification data
+                    const lastNotification = JSON.parse(localStorage.getItem('lastVideoNotification') || '{}');
 
-            // Check if this is a new video or if the user hasn't dismissed the current one
-            if (videoId !== lastNotification.videoId || (videoId === lastNotification.videoId && !lastNotification.dismissed)) {
-              showYoutubeNotification({
-                id: videoId,
-                title: videoDetails.title,
-                description: videoDetails.description,
-                thumbnail: videoDetails.thumbnails.high.url,
-                views: videoStats.viewCount,
-                likes: videoStats.likeCount
-              });
+                    // Check if this is a new video or if the user hasn't dismissed the current one
+                    if (videoId !== lastNotification.videoId || (videoId === lastNotification.videoId && !lastNotification.dismissed)) {
+                        showYoutubeNotification({
+                            id: videoId,
+                            title: videoDetails.title,
+                            description: videoDetails.description,
+                            thumbnail: videoDetails.thumbnails.high.url,
+                            views: videoStats.viewCount,
+                            likes: videoStats.likeCount
+                        });
+                    }
+                }
             }
-          }
+        } catch (error) {
+            console.error('Error checking for new uploads:', error);
         }
-      } catch (error) {
-        console.error('Error checking for new uploads:', error);
-      }
     }
 
     function showYoutubeNotification(video) {
-      const modal = document.getElementById('youtubeModal');
-      const thumbnail = document.getElementById('videoThumbnail');
-      const title = document.getElementById('videoTitle');
-      const views = document.getElementById('videoViews');
-      const likes = document.getElementById('videoLikes');
-      const description = document.getElementById('videoDescription');
-      const watchButton = document.getElementById('watchNowButton');
+        const modal = document.getElementById('youtubeModal');
+        const thumbnail = document.getElementById('videoThumbnail');
+        const title = document.getElementById('videoTitle');
+        const views = document.getElementById('videoViews');
+        const likes = document.getElementById('videoLikes');
+        const description = document.getElementById('videoDescription');
+        const watchButton = document.getElementById('watchNowButton');
 
-      thumbnail.src = video.thumbnail;
-      title.textContent = video.title;
-      views.textContent = `${parseInt(video.views).toLocaleString()} views`;
-      likes.textContent = `${parseInt(video.likes).toLocaleString()} likes`;
-      description.textContent = video.description;
+        thumbnail.src = video.thumbnail;
+        title.textContent = video.title;
+        views.textContent = `${parseInt(video.views).toLocaleString()} views`;
+        likes.textContent = `${parseInt(video.likes).toLocaleString()} likes`;
+        description.textContent = video.description;
 
-      watchButton.onclick = () => {
-        window.open(`https://www.youtube.com/watch?v=${video.id}`, '_blank');
-        dismissYoutubeModal(video.id, true); // true indicates user watched the video
-      };
+        watchButton.onclick = () => {
+            window.open(`https://www.youtube.com/watch?v=${video.id}`, '_blank');
+            dismissYoutubeModal(video.id, true); // true indicates user watched the video
+        };
 
-      modal.style.display = 'block';
+        modal.style.display = 'block';
 
-      // Store current video info without dismissed flag
-      localStorage.setItem('lastVideoNotification', JSON.stringify({
-        videoId: video.id,
-        dismissed: false,
-        timestamp: new Date().toISOString()
-      }));
+        // Store current video info without dismissed flag
+        localStorage.setItem('lastVideoNotification', JSON.stringify({
+            videoId: video.id,
+            dismissed: false,
+            timestamp: new Date().toISOString()
+        }));
     }
 
     function dismissYoutubeModal(videoId, watched = false) {
-      const modal = document.getElementById('youtubeModal');
-      modal.style.display = 'none';
+        const modal = document.getElementById('youtubeModal');
+        modal.style.display = 'none';
 
-      // Update storage to indicate this video was dismissed
-      const lastNotification = JSON.parse(localStorage.getItem('lastVideoNotification') || '{}');
-      localStorage.setItem('lastVideoNotification', JSON.stringify({
-        ...lastNotification,
-        dismissed: true,
-        watched: watched,
-        dismissedAt: new Date().toISOString()
-      }));
+        // Update storage to indicate this video was dismissed
+        const lastNotification = JSON.parse(localStorage.getItem('lastVideoNotification') || '{}');
+        localStorage.setItem('lastVideoNotification', JSON.stringify({
+            ...lastNotification,
+            dismissed: true,
+            watched: watched,
+            dismissedAt: new Date().toISOString()
+        }));
     }
 
     // Check for new uploads when the page loads
     window.addEventListener('load', checkNewUpload);
-  </script>
+</script>
 </body>
 
 </html>
